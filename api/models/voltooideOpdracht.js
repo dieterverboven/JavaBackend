@@ -8,4 +8,4 @@ const voltooideOpdrachtSchema = mongoose.Schema({
     goedgekeurd: Number
 })
 
-module.exports = mongoose.model('voltooideOpdracht', voltooideOpdrachtSchema);
+module.exports = mongoose.model('VoltooideOpdracht', voltooideOpdrachtSchema);
