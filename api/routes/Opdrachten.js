@@ -38,7 +38,6 @@ router.get('/:opdrachtId', (req, res, next)=> {
     });
 });
 
-
 // get opdrachten by punten
 router.get('/punten/:aantal', (req, res, next)=> {
     const aantal = req.params.aantal;
