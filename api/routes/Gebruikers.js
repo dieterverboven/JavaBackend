@@ -40,4 +40,56 @@ router.post('/', (req, res, next)=> {
     })
 });
 
+router.delete('/:gebruikerId', (req, res, next)=> {
+    const id = req.params.gebruikerId;
+    Gebruiker.remove({_id: id})
+    .exec()
+    .then(result => {
+        res.status(200).json(result);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        })
+    });
+});
+
+router.delete('/', (req, res, next)=> {
+    Gebruiker.remove({})
+    .exec()
+    .then(result => {
+        res.status(200).json(result);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        })
+    });
+});
+
+router.patch('/:gebruikerId', (req, res, next)=>{
+    const id = req.params.gebruikerId;
+    const updateOps = {};
+
+    for (const key of Object.keys(req.body)) {
+      updateOps[key] = req.body[key]
+    }
+
+    Gebruiker.update({_id: id}, { $set: updateOps})
+    .exec()
+    .then(result =>{
+        console.log(result);
+        res.status(200).json(result);
+    })
+    .catch(err=>{
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
+    });
+});
+
+
 module.exports = router;

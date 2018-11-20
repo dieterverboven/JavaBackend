@@ -84,4 +84,32 @@ router.delete('/', (req, res, next)=> {
     });
 });
 
+router.patch('/:beloningId', (req, res, next)=>{
+    const id = req.params.beloningId;
+    const updateOps = {};
+
+    console.log(req.body);
+
+
+    for (const key of Object.keys(req.body)) {
+      updateOps[key] = req.body[key]
+    }
+    console.log(updateOps);    
+
+    Beloning.update({_id: id}, { $set: updateOps})
+    .exec()
+    .then(result =>{
+        console.log(result);
+        res.status(200).json(result);
+    })
+    .catch(err=>{
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
+    });
+
+
+});
+
 module.exports = router;
