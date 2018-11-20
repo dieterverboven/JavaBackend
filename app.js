@@ -23,6 +23,23 @@ mongoose.connect('mongodb://localhost:27017/test');
 // // });
 mongoose.connect('mongodb://localhost:27017/test');
 
+//passport
+var passport = require('passport-local');
+var session = require('express-session');
+
+/*app.use(session({
+    name: 'myname.sid',
+    resave: false,
+    saveUninitialized: false,
+    cookie:{
+        maxAge: 86400000,
+        httpOnly: false,
+        secure: false
+    }
+}));
+
+//app.use(passport.session())*/
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use('/Beloningen', beloningRoutes);
