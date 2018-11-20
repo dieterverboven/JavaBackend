@@ -157,7 +157,7 @@ router.delete('/:opdrachtId', (req, res, next)=> {
 
 // alle voltooide opdrachten verwijderen
 router.delete('/', (req, res, next)=> {
-    VoltooideOpdracht.remove()
+    VoltooideOpdracht.remove({})
     .exec()
     .then(result => {
         res.status(200).json(result);
