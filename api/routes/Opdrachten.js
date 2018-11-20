@@ -38,6 +38,23 @@ router.get('/:opdrachtId', (req, res, next)=> {
     });
 });
 
+// get opdrachten by punten
+router.get('/punten/:aantal', (req, res, next)=> {
+    const aantal = req.params.aantal;
+    Opdracht.find({punten: aantal})
+    .exec()
+    .then(docs => {
+        console.log(docs);
+        res.status(200).json(docs);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        })
+    });
+});
+
 //nieuwe opdracht aanmaken
 router.post('/', (req, res, next)=> {
     const opdracht = new Opdracht({
@@ -52,9 +69,31 @@ router.post('/', (req, res, next)=> {
     })
     .catch(err => console.log(err));
     res.status(201).json({
-        message: 'Bezig',
+        message: 'Aangemaakt',
         aangemaakteOpdracht: opdracht
     })
+});
+
+// update opdracht via patch
+router.patch('/:opdrachtId', (req, res, next)=> {
+    const id = req.params.opdrachtId;
+    const updateOps = {};
+
+    for (const key of Object.keys(req.body)) {
+      updateOps[key] = req.body[key]
+    }
+    Opdracht.update({_id: id}, {$set: updateOps})
+    .exec()
+    .then(result => {
+        console.log(result);
+        res.status(200).json(result);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
+    });
 });
 
 // opdracht verwijderen

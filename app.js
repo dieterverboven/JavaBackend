@@ -21,6 +21,7 @@ mongoose.connect('mongodb://localhost:27017/test');
 // //         return res.status(200).json({})
 // //     }
 // // });
+mongoose.connect('mongodb://localhost:27017/test');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -28,7 +29,6 @@ app.use('/Beloningen', beloningRoutes);
 app.use('/Gebruikers', gebruikerRoutes);
 app.use('/Opdrachten', opdrachtRoutes);
 app.use('/voltooideOpdrachten', voltooideOpdrachtRoutes);
-
 
 var db = mongoose.connection;
 
