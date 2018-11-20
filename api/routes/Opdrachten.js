@@ -74,7 +74,7 @@ router.post('/', (req, res, next)=> {
     })
 });
 
-// update opdracht
+// update opdracht via patch
 router.patch('/:opdrachtId', (req, res, next)=> {
     const id = req.params.opdrachtId;
     const updateOps = {};
