@@ -13,7 +13,7 @@ mongoose.connect('mongodb://admin:admin@reward-system-shard-00-00-guwav.mongodb.
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use('/Beloningen', beloningRoutes);
-//app.use('/Gebruikers', gebruikerRoutes);
+app.use('/Gebruikers', gebruikerRoutes);
 
 
 var db = mongoose.connection;
