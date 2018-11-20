@@ -2,10 +2,11 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
 
 const beloningRoutes = require('./api/routes/Beloningen');
 const gebruikerRoutes = require('./api/routes/Gebruikers');
+const opdrachtRoutes = require('./api/routes/Opdrachten');
+const voltooideOpdrachtRoutes = require('./api/routes/voltooideOpdrachten');
 
 //mongoose.connect("", { useNewUrlParser: true });
 
@@ -15,6 +16,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use('/Beloningen', beloningRoutes);
 app.use('/Gebruikers', gebruikerRoutes);
+app.use('/Opdrachten', opdrachtRoutes);
+app.use('/voltooideOpdrachten', voltooideOpdrachtRoutes);
 
 
 var db = mongoose.connection;

@@ -27,7 +27,6 @@ router.get('/:beloningId', (req, res, next)=> {
     .exec()
     .then(doc => {
         console.log(doc);
-        console.log('hehe');
         res.status(200).json(doc);
     })
     .catch(err => {
