@@ -2,13 +2,25 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var cors = require('cors');
+
+app.use(cors());
 
 const beloningRoutes = require('./api/routes/Beloningen');
 const gebruikerRoutes = require('./api/routes/Gebruikers');
 const opdrachtRoutes = require('./api/routes/Opdrachten');
 const voltooideOpdrachtRoutes = require('./api/routes/voltooideOpdrachten');
 
-mongoose.connect("mongodb://admin:admin@reward-system-shard-00-00-guwav.mongodb.net:27017,reward-system-shard-00-01-guwav.mongodb.net:27017,reward-system-shard-00-02-guwav.mongodb.net:27017/test?ssl=true&replicaSet=reward-system-shard-0&authSource=admin&retryWrites=true");
+mongoose.connect('mongodb://localhost:27017/test');
+
+// app.use((req, res, next) => {
+// //     res.header('Access-Control-Allow-Origin', '*');
+// //     res.header('Access-Control-Allow-Headers','Origin, X-Requested-Width, Content-Type, Accept, Authorization');
+// //     if (req.method === 'OPTIONS') {
+// //         res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET' );
+// //         return res.status(200).json({})
+// //     }
+// // });
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -22,7 +34,6 @@ var db = mongoose.connection;
 
 app.get('/', (req, res)=> {
    res.send('Hello World');
-
 });
 
 app.listen(3000, ()=>{
