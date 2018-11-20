@@ -7,9 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "body-parser": "*",
     "express": "*",
-    "mongoose": "*",
-    "body-parser": "*"
+    "mongodb": "^3.1.10",
+    "mongoose": "*"
   },
   "author": "",
   "license": "ISC"
