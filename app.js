@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 const beloningRoutes = require('./api/routes/Beloningen');
 const gebruikerRoutes = require('./api/routes/Gebruikers');
 const opdrachtRoutes = require('./api/routes/Opdrachten');
-const voltooideOpdrachtRoutes = require('./api/routes/voltooideOpdrachten');
+const voltooideOpdrachtRoutes = require('./api/routes/VoltooideOpdrachten');
 
 mongoose.connect('mongodb://localhost:27017/test');
 
@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use('/Beloningen', beloningRoutes);
 app.use('/Gebruikers', gebruikerRoutes);
 app.use('/Opdrachten', opdrachtRoutes);
-app.use('/voltooideOpdrachten', voltooideOpdrachtRoutes);
+app.use('/VoltooideOpdrachten', voltooideOpdrachtRoutes);
 
 var db = mongoose.connection;
 
