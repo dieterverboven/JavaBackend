@@ -35,7 +35,7 @@ router.post('/', (req, res, next)=> {
     })
     .catch(err => console.log(err));
     res.status(201).json({
-        message: 'Error met post',
+        message: 'Gebruiker aangemaakt',
         aangemaakteGebruiker: gebruiker
     })
 });
