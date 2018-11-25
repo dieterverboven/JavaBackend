@@ -3,6 +3,8 @@ const router = express.Router();
 const mongoose = require('mongoose');
 
 const Gebruiker = require('../models/Gebruiker');
+var passport = require('passport');
+require('../../passport-config');
 
 router.get('/', (req, res, next)=> {
     Gebruiker.find()
@@ -109,6 +111,26 @@ router.patch('/:gebruikerId', (req, res, next)=>{
         });
     });
 });
+
+
+
+router.post('/login', (req, res, next)=> {
+    console.log(req.body);
+    Gebruiker.findOne({naam: req.body.naam, passwoord: req.body.passwoord})
+    .exec()
+    .then(docs => {
+        console.log(docs);
+        res.status(200).json(docs);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        })
+    });
+});
+
+
 
 
 module.exports = router;

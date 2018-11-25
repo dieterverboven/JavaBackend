@@ -76,11 +76,13 @@ router.get('/goedkeuren/:bool', (req, res, next)=> {
 
 // voltooide opdracht aanmaken
 router.post('/', (req, res, next)=> {
-    const url = "http://localhost:3000/Opdrachten/";
+
+    console.log(req.body);
+
     const opdracht = new VoltooideOpdracht({
         _id: new mongoose.Types.ObjectId,
         gebruikerId: req.body.gebruikerId,
-        opdrachtId: url + req.body.opdrachtId,
+        opdrachtId: req.body.opdrachtId,
         uitleg: req.body.uitleg,
         goedgekeurd: 0        
     });
