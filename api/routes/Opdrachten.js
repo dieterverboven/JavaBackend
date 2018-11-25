@@ -60,7 +60,8 @@ router.post('/', (req, res, next)=> {
     const opdracht = new Opdracht({
         _id: new mongoose.Types.ObjectId,
         uitleg: req.body.uitleg,
-        punten: req.body.punten
+        punten: req.body.punten,
+        goedgekeurd: req.body.goedgekeurd
     });
     opdracht
     .save()
@@ -78,6 +79,8 @@ router.post('/', (req, res, next)=> {
 router.patch('/:opdrachtId', (req, res, next)=> {
     const id = req.params.opdrachtId;
     const updateOps = {};
+
+    console.log(req.body);
 
     for (const key of Object.keys(req.body)) {
       updateOps[key] = req.body[key]
