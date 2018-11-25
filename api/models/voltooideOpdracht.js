@@ -5,7 +5,7 @@ const voltooideOpdrachtSchema = mongoose.Schema({
     opdrachtId: String,
     gebruikerId: mongoose.Schema.Types.ObjectId,
     uitleg: String,
-    goedgekeurd: Number
+    goedgekeurd: Number,
 })
 
 module.exports = mongoose.model('VoltooideOpdracht', voltooideOpdrachtSchema);

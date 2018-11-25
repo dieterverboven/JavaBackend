@@ -56,9 +56,9 @@ router.get('/gebruiker/:gebruikerId', (req, res, next)=> {
 
 // get opdrachten by gebruiker
 
-// goedkeuren/0 laat alle data zien dat nog niet goedgekeurd is, goedkeuren/1 laat data zien dat al wel is goedgekeurd
+// goedgekeurd/0 laat alle data zien dat nog niet goedgekeurd is, goedgekeurd/1 laat data zien dat al wel is goedgekeurd
 
-router.get('/goedkeuren/:bool', (req, res, next)=> {
+router.get('/goedgekeurd/:bool', (req, res, next)=> {
     const bool = req.params.bool;
     VoltooideOpdracht.find({goedgekeurd: bool})
     .exec()
