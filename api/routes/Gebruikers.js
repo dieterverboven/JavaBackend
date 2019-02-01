@@ -116,7 +116,7 @@ router.patch('/:gebruikerId', (req, res, next)=>{
 
 router.post('/login', (req, res, next)=> {
     console.log(req.body);
-    Gebruiker.findOne({naam: req.body.naam, passwoord: req.body.passwoord})
+    Gebruiker.findOne({email: req.body.email, passwoord: req.body.passwoord})
     .exec()
     .then(docs => {
         console.log(docs);
